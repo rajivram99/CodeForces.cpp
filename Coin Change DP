@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int solve(int coins[],int m, int v)
+{
+    int table[v+1];
+    table[0]=0;
+    
+    for(int i=1;i<=v;i++)
+        table[i] = INT_MAX;
+    
+    for(int i=1;i<=v;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(coins[j]<=i)
+            {
+               int subres=table[i-coins[j]];
+               if(subres!=INT_MAX && subres+1 < table[i])
+                    table[i]=subres+1;
+            }
+        }
+    }
+    return table[v];
+}
+int main() 
+{
+    int arr[]={1,5,10,20,100};
+    int m=sizeof(arr)/sizeof(arr[0]);
+    int v;
+    cin>>v;
+    int res = solve(arr,m,v);
+    cout<<res;
+    return 0;
+}
