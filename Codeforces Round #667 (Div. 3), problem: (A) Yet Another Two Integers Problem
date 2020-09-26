@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+ 
+int mul(ll a)
+{
+    if(a%10==0)
+        return a/10;
+    else
+        return (a/10)+1;
+}
+ 
+int main() {
+    int test;
+    cin>>test;
+    ll sum;
+    ll res;
+    while(test--)
+    {
+    ll a,b;
+    cin>>a>>b;
+        if(b>a)
+        {
+            sum=b-a;
+            res=mul(sum);
+            cout<<res<<endl;
+            continue;
+        }
+        else if(a>b)
+        {
+            sum=a-b;
+            res=mul(sum);
+            cout<<res<<endl;
+            continue;
+        }
+        else if(a==b)
+        {
+            cout<<0<<endl;
+        }
+    }
+  return 0;
+}
