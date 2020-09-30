@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+struct Node
+{
+    int data;
+    struct Node *next;
+   
+};
+struct Node* head = NULL;
+
+int revert(int num)
+{
+    int rem;
+    int res=0;
+    while(num!=0)
+    {
+        rem=num%10;
+        res=res*10+rem;
+        num=num/10;
+    }
+    return res;
+
+}
+
+void reverseLLele(struct Node* temp)
+{
+    if(temp == NULL)
+        return;
+    while(temp!=NULL)
+    {
+        temp->data=revert(temp->data);
+        temp=temp->next;
+    }
+}
+
+void insert(int new_data)
+{
+     struct Node* new_node=new Node();
+    new_node->data = new_data;
+    new_node->next = head;
+     head = new_node;
+}
+void display() 
+{
+   struct Node* ptr;
+   ptr = head;
+   while (ptr != NULL) {
+      cout<< ptr->data <<" ";
+      ptr = ptr->next;
+   }
+   cout<<endl;
+}
+void insertNodeAt(int data, int n)
+{
+	Node* temp1 = new Node();
+	temp1->data = data;
+	temp1->next = NULL;
+	if (n == 1)
+	{
+		temp1->next = head;
+		head = temp1;
+		return;
+	}
+	Node* temp2 = head;
+	for (int i = 0; i < n - 2; i++)
+	{
+		temp2 = temp2->next;
+	}
+
+	temp1->next = temp2->next;
+	temp2->next = temp1;
+
+}
+
+
+
+int main()
+{
+   insert(32);
+   insert(14);
+   insert(73);
+   insert(288);
+   insert(97);
+   insertNodeAt(100,3);
+   cout<<"The linked list is: ";
+   display();
+    cout<<"The linked list after reverse and insert operation: ";
+    reverseLLele(head);
+   display();
+   return 0;
+}
