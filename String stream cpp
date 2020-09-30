@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+   string s;
+   getline(cin,s);
+   map<string,int> um;
+   stringstream ss(s);
+   string word;
+   int count=0;
+   while(ss>>word)
+    {
+        count++;
+        um[word]++;
+    }
+    map<string,int>::iterator itr;
+    int maxi=0,temp;
+    for(itr=um.begin();itr!=um.end();itr++)
+    {
+        temp=itr->second;
+        maxi=max(maxi,temp);
+    }
+    cout<<maxi;
+}
