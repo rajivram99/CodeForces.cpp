@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int arr[]={-1,-2,4,-1,-2,1,5,-3};
+    int size=sizeof(arr)/sizeof(arr[0]);
+    
+    int maxend=0;
+    int maxsofar=0;
+    
+    for(int i=0;i<size;i++)
+    {
+        maxend=maxend+arr[i];
+        maxend=max(maxend,0);
+        maxsofar=max(maxend,maxsofar);
+    }
+    cout<<maxsofar;
+    return 0;
+}
