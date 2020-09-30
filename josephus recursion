@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int recu(int n,int k)
+{
+    if(n==1)
+    {
+        return 1;
+    }
+    else
+    {
+   return (recu(n-1,k) + k-1)% n +1;
+    }
+    }
+
+int main()
+ {
+	int test;
+	cin>>test;
+	int n,k;
+	while(test--)
+	{
+	cin>>n>>k;
+	cout<<recu(n,k)<<" ";
+	cout<<"\n";
+	}
+	return 0;
+}
+
+// Explanation:Testcase 1: here n = 2 and k = 1, then safe position is 2 as the person at 1st position will be killed.INDEX =1 from start 
