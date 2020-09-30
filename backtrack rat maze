@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+#define N 5
+using namespace std;
+int maze[N][N]  =  {
+   {1, 0, 0, 0, 0},
+   {1, 1, 1, 0, 1},
+   {0, 1, 1, 0, 1},
+   {0, 0, 1, 0, 1},
+   {1, 1, 1, 1, 1}
+};
+int sol[N][N];
+
+void showPath() {
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++)
+         cout << sol[i][j] << " ";
+      cout << endl;
+   }
+}
+
+bool isvalidpath(int x,int y)
+{
+    if(x>=0 && x<N && y>=0 && y<N && maze[x][y]==1)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool ratmaze(int x, int y)
+{
+    if(x == N-1 && y == N-1)
+    {
+        sol[x][y]=1;        //base condition
+        return true;
+    }
+    if(isvalidpath(x,y) == true)
+    {
+        sol[x][y]=1;
+         if(ratmaze(x+1,y)==true)
+             return true;
+        if(ratmaze(x,y+1)==true)
+            return true;
+          
+    }
+    sol[x][y]=0;        //the path is blocked so when backtrack make it 0.
+    return false;
+}
+
+bool solution()
+{
+    if(ratmaze(0,0)==false)
+      {  cout<<"No paths available";
+         return false;
+      }
+   showPath();
+   return true;
+}
+int main()
+{
+    solution();
+}
