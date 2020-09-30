@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct ad
+{
+    int first;
+    string second;
+};
+
+bool predict(ad s1, ad s2)
+{
+    return s1.first<s2.first;
+
+}
+
+int main()
+{
+    int n=12;
+    int count=0;
+    ad arr1[n];
+    for(int i=0;i<6;i++)
+    {
+        cin>>arr1[i].first;
+        arr1[i].second="a";
+    }
+    for(int i=6;i<12;i++)
+    {
+        cin>>arr1[i].first;
+        arr1[i].second="d";
+    }
+    sort(arr1,arr1+n,predict);
+    int maxi=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr1[i].second == "a")
+        {
+            count++;
+            if(count > maxi)
+                maxi=count;
+        }
+        else
+        {
+            count--;
+            if(count > maxi)
+                maxi=count;
+        }
+     }
+
+    cout<<endl;
+    cout<<maxi;
+
+}
