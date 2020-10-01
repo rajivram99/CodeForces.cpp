@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	int cuts;
+	cin>>cuts;
+	int cutarr[cuts];
+	for(int i=0;i<cuts;i++)
+		cin>>cutarr[i];
+	int dp[cuts+1][n+1];
+	for(int i=0;i<cuts+1;i++)
+	{
+		for(int j=0;j<n+1;j++)
+		{
+			if(i==0 || j==0)
+				dp[i][j]=0;
+			else
+				if(i>j)
+				{
+					dp[i][j]=dp[i-1][j];
+				}
+				else
+				{
+					dp[i][j]=max(dp[i-1][j],dp[i][j-i]+cutarr[i-1]);
+				}
+		}
+	}
+cout<<"---------DP Table----------"<<endl;
+	for(int i=0;i<cuts+1;i++)
+	{
+		for(int j=0;j<n+1;j++)
+		{
+			cout<<dp[i][j]<<" ";
+			
+		}
+		cout<<endl;
+	}
+cout<<"The points are-->";
+	int i=cuts;
+	int j=n;
+	while(i>0 || j>0)
+	{
+		if(dp[i][j]==dp[i-1][j])
+		{
+			i--;
+		}
+		else
+		{
+			cout<<i<<" ";
+			j=j-i;
+		}
+	}
+	return 0;
+}
