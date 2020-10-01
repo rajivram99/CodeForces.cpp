@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int min(int a, int b, int c)
+{
+	return a>b && a>c ? a : b<c ? b:c;
+}
+
+int main()
+{
+	int M,N;
+	cin>>M>>N;
+	int mat[M][N];
+	int dp[M][N];
+	int max=0;
+	for(int i=0;i<M;i++)
+	{
+		for(int j=0;j<N;j++)
+		{
+			cin>>mat[i][j];
+			if(i==0 ||j==0)
+			{
+				dp[i][j]=mat[i][j];
+			}
+			else
+			{
+				if(mat[i][j]==1)
+					dp[i][j]=min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) + 1;
+				else
+					dp[i][j]=0;
+			}
+			if(dp[i][j]>max)
+				max=dp[i][j];
+				
+		}
+	}
+	cout<<max;
+	return 0;
+}
+
+/*
+we dont need dummy row || col with 0's as we copy the orginal row and column of 0th row to DP table and manipulate in it
+output returns the row size or col size of subsquare matrix
+dp[i][j] = compare with left,right,up ... find the minimum value +1.
+because if value is 1 it contains 1X1 subarray.
