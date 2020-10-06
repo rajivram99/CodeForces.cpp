@@ -39,7 +39,7 @@ int maxele(struct Node *root) //maxelement in Btree
 	if(root == NULL)
 		return INT_MIN;
 	else
-		return max(root->key,max(maxele(root->left),maxele(root->right)));
+		return max(root->key,max(maxele(root->left),maxele(root->right))); //compare max(root,max(left and right)) using recursion 
 }
 int main()
 {
