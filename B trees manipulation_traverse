@@ -3,6 +3,10 @@ using namespace std;
 
 
 
+//btree rule if you have 7 nodes possible height is 1.44 * log2(7) -->4.04 , so maximum height can be 4 it cant be more than that
+// important rule
+
+
 struct Node
 {
     int key;
