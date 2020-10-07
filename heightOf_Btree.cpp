@@ -41,7 +41,18 @@ int height(struct Node* root)
 		return max(height(root->left),height(root->right))+1;
 	}
 }
+/* height of b tree
 
+	10
+      /	   \
+     20    30
+    /
+   40
+
+height is 3
+no of edges = height - 1 = 2 
+
+*/
 int main()
 {
     struct Node* root=new Node(10);
