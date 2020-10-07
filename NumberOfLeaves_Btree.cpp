@@ -42,6 +42,16 @@ int height(struct Node* root)
 	}
 }
 
+/* height of b tree
+	10
+      /	   \
+     20    30
+    /
+   40
+leaves count = 2
+40 and 30
+*/
+
 int countLeaves(struct Node* root)
 {
   if(root == NULL)
