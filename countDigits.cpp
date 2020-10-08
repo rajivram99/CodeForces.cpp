@@ -11,6 +11,6 @@ int main()
 	int n;
 	cin>>n;
 	int cd = countDigits(n);	
-     cout<<cd;
+        cout<<cd;
 	return 0;
 }
